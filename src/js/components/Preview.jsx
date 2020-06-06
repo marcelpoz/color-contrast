@@ -12,7 +12,7 @@ const Preview = () => {
         flexFlow: 'column nowrap',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: bgColour || '#FFFFFF',
+        backgroundColor: bgColour.hex || '#FFFFFF',
         flexGrow: 1,
       }}
     >
@@ -25,7 +25,7 @@ const Preview = () => {
           textAlign: 'center',
           background: 'transparent',
           border: 0,
-          color: textColour || '#000000',
+          color: textColour.hex || '#000000',
           fontSize: fontSize || 16,
           fontWeight: fontWeight || 400,
         }}
