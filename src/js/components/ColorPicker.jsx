@@ -12,14 +12,13 @@ export default class ColorPicker extends Component {
   }
 
   handlePickerChange = color => {
-    const { hex } = color;
     const { type } = this.props;
     const updatedContext = { ...this.context };
     const { updateContext } = this.context;
 
-    this.setState({ color: hex });
+    this.setState({ color });
     if (!type) return;
-    updatedContext[type] = color.hex;
+    updatedContext[type] = color;
     updateContext(updatedContext);
   };
 
@@ -41,7 +40,12 @@ ColorPicker.contextType = Context;
 ColorPicker.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.shape({
+    hex: PropTypes.string.isRequired,
+    r: PropTypes.number.isRequired,
+    g: PropTypes.number.isRequired,
+    b: PropTypes.number.isRequired,
+  }),
 };
 
 ColorPicker.defaultProps = {
