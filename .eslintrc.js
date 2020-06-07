@@ -13,6 +13,7 @@ module.exports = {
   extends: ['airbnb', 'eslint:recommended', 'prettier'],
   plugins: ['prettier'],
   rules: {
+    'react/jsx-one-expression-per-line': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
