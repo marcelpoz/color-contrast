@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import Context from '../Context';
 
 const Preview = () => {
@@ -16,7 +17,8 @@ const Preview = () => {
         flexGrow: 1,
       }}
     >
-      <div
+      <span
+        // contentEditable
         style={{
           display: 'block',
           width: '100%',
@@ -26,12 +28,12 @@ const Preview = () => {
           background: 'transparent',
           border: 0,
           color: textColour.hex || '#000000',
-          fontSize: fontSize || 16,
+          fontSize,
           fontWeight: fontWeight || 400,
         }}
       >
-        <span contentEditable="true">Colour Contrast Checker</span>
-      </div>
+        Colour Contrast Checker
+      </span>
     </section>
   );
 };
