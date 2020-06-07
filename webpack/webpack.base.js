@@ -28,7 +28,7 @@ module.exports = env => {
           test: /\.css$/,
           exclude: /(node_modules)/,
           loader: ['style-loader', 'css-loader'],
-        }
+        },
       ],
     },
 
@@ -49,7 +49,7 @@ module.exports = env => {
         filename: `${paths.dist}/index.html`,
         inject: true,
         meta: {
-          viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+          viewport: 'width=device-width, initial-scale=1',
         },
       }),
       new ProgressBarPlugin({
