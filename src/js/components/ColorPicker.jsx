@@ -8,8 +8,16 @@ export default class ColorPicker extends Component {
   constructor(props) {
     super(props);
     const { color } = this.props;
-    this.state = { color };
+    this.state = {
+      color,
+      show: false,
+    };
   }
+
+  toggleDisplay = () => {
+    const { show } = this.state;
+    this.setState({ show: !show });
+  };
 
   handlePickerChange = color => {
     const { type } = this.props;
@@ -24,12 +32,22 @@ export default class ColorPicker extends Component {
 
   render() {
     const { title } = this.props;
-    const { color } = this.state;
-
+    const { color, show } = this.state;
     return (
       <section>
-        <h2>{title}</h2>
-        <ChromePicker disableAlpha color={color} onChange={this.handlePickerChange} />
+        <div
+          style={{ position: 'relative' }}
+          onMouseEnter={this.toggleDisplay}
+          onMouseLeave={this.toggleDisplay}
+        >
+          <label htmlFor="colorPicker">
+            <span>{title}</span>
+            <input readOnly value={color.hex} />
+            <div style={{ display: show ? 'block' : 'none', position: 'absolute', zIndex: 1 }}>
+              <ChromePicker disableAlpha color={color} onChange={this.handlePickerChange} />
+            </div>
+          </label>
+        </div>
       </section>
     );
   }
@@ -41,10 +59,12 @@ ColorPicker.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
   color: PropTypes.shape({
-    hex: PropTypes.string.isRequired,
-    r: PropTypes.number.isRequired,
-    g: PropTypes.number.isRequired,
-    b: PropTypes.number.isRequired,
+    hex: PropTypes.string,
+    rgb: PropTypes.shape({
+      r: PropTypes.number,
+      g: PropTypes.number,
+      b: PropTypes.number,
+    }),
   }),
 };
 
