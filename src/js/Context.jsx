@@ -7,11 +7,35 @@ export class ContextProvider extends Component {
   constructor() {
     super();
     this.state = {
-      bgColour: '#2a6ab4',
-      textColour: '#000000',
+      title: 'Colour Contrast Checker',
+      bgColour: {
+        hex: '#8127db',
+        rgb: {
+          r: 129,
+          g: 39,
+          b: 219,
+        },
+      },
+      textColour: {
+        hex: '#ffffff',
+        rgb: {
+          r: 255,
+          g: 255,
+          b: 255,
+        },
+      },
       fontSize: 36,
       fontWeight: 700,
-      title: 'Colour Contrast Checker',
+      passRatios: {
+        AA: {
+          normal: 1 / 4.5,
+          large: 1 / 3,
+        },
+        AAA: {
+          normal: 1 / 7,
+          large: 1 / 4.5,
+        },
+      },
     };
   }
 
