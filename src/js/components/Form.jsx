@@ -14,16 +14,15 @@ export default () => {
     <form
       style={{
         display: 'flex',
+        flexFlow: 'row wrap',
         alignItems: 'center',
         justifyContent: 'space-evenly',
       }}
     >
       <ColorPicker type="textColour" color={textColour} title="Text Colour" />
       <ColorPicker type="bgColour" color={bgColour} title="Background Colour" />
-      <fieldset>
-        <InputFontSize />
-        <SelectFontWeight />
-      </fieldset>
+      <InputFontSize />
+      <SelectFontWeight />
     </form>
   );
 };
