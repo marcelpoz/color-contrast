@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import Context from '../Context';
 
+import FormControl from '../atoms/FormControl';
+import FormLabel from '../atoms/FormLabel';
+import SelectInput from '../atoms/SelectInput';
+
 export default class SelectFontWeight extends Component {
   handleChange = e => {
     const { updateContext } = this.context;
@@ -13,17 +17,15 @@ export default class SelectFontWeight extends Component {
     const { fontWeight } = this.context;
 
     return (
-      <div className="form-group">
-        <label htmlFor="input-fontstyle">
-          Font style:
-          <select name="input-fontstyle" defaultValue={fontWeight} onChange={this.handleChange}>
-            <option value="100">Light</option>
-            <option value="400">Normal</option>
-            <option value="700">Bold</option>
-            <option value="900">Extra Bold</option>
-          </select>
-        </label>
-      </div>
+      <FormControl>
+        <FormLabel>Font weight</FormLabel>
+        <SelectInput defaultValue={fontWeight} onChange={this.handleChange}>
+          <option value="100">Light</option>
+          <option value="400">Normal</option>
+          <option value="700">Bold</option>
+          <option value="900">Extra Bold</option>
+        </SelectInput>
+      </FormControl>
     );
   }
 }
