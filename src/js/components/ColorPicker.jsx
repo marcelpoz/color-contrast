@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { styled } from 'linaria/react';
 import { ChromePicker } from 'react-color';
 
 import Context from '../Context';
 
+import FormControl from '../atoms/FormControl';
+import FormInput from '../atoms/FormInput';
+import FormLabel from '../atoms/FormLabel';
+
+const pickerOffset = 3;
+const PickerWrap = styled.div`
+  position: absolute;
+  top: 100%;
+  left: -${pickerOffset / 2}rem;
+  padding: 0 ${pickerOffset}rem ${pickerOffset}rem;
+  z-index: 1;
+`;
 export default class ColorPicker extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +26,11 @@ export default class ColorPicker extends Component {
       show: false,
     };
   }
+
+  handleMouseLeave = () => {
+    const { show } = this.state;
+    if (show) this.toggleDisplay();
+  };
 
   toggleDisplay = () => {
     const { show } = this.state;
@@ -28,27 +46,24 @@ export default class ColorPicker extends Component {
     if (!type) return;
     updatedContext[type] = color;
     updateContext(updatedContext);
+    document.documentElement.style.setProperty(`--${type}`, color.hex);
   };
 
   render() {
     const { title } = this.props;
     const { color, show } = this.state;
     return (
-      <section>
-        <div
-          style={{ position: 'relative' }}
-          onMouseEnter={this.toggleDisplay}
-          onMouseLeave={this.toggleDisplay}
-        >
-          <label htmlFor="colorPicker">
-            <span>{title}</span>
-            <input readOnly value={color.hex} />
-            <div style={{ display: show ? 'block' : 'none', position: 'absolute', zIndex: 1 }}>
+      <FormControl onFocus={this.toggleDisplay} onMouseLeave={this.handleMouseLeave}>
+        <label htmlFor="colorPicker">
+          <FormLabel>{title}</FormLabel>
+          <FormInput readOnly value={color.hex} />
+          {show && (
+            <PickerWrap>
               <ChromePicker disableAlpha color={color} onChange={this.handlePickerChange} />
-            </div>
-          </label>
-        </div>
-      </section>
+            </PickerWrap>
+          )}
+        </label>
+      </FormControl>
     );
   }
 }
