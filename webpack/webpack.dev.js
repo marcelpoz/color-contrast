@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const chalk = require('chalk');
 const merge = require('webpack-merge');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
@@ -27,9 +28,7 @@ module.exports = env => {
     plugins: [
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
-          messages: [
-            chalk.blue('🎉   Check out your react app here  👉🏻  http://localhost:3000'),
-          ],
+          messages: [chalk.blue('🎉   Check out your react app here  👉🏻  http://localhost:3000')],
         },
       }),
     ],
