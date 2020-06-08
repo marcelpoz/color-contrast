@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="256" height="256" src="https://i.imgur.com/eBPPaIw.png" alt="Svelte">
+  <img src="https://i.imgur.com/eBPPaIw.png" alt="Svelte">
 </p>
 
 <h1 align="center">WCAG Color Contrast Checker</h1>
