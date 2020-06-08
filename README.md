@@ -1,10 +1,12 @@
 <p align="center">
-  <img width="256" height="256" src="https://raw.githubusercontent.com/sveltejs/svelte/29052aba7d0b78316d3a52aef1d7ddd54fe6ca84/site/static/images/svelte-android-chrome-512.png" alt="Svelte">
+  <img width="256" height="256" src="https://i.imgur.com/eBPPaIw.png" alt="Svelte">
 </p>
 
 <h1 align="center">WCAG Color Contrast Checker</h1>
 
 <p align="center">A simple, user-friendly tool for checking color contrast ratio levels</p>
+
+<p align="center">Built with React and Linaria</p>
 
 ## Prerequisites
 
