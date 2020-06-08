@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
