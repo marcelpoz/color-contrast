@@ -1,6 +1,8 @@
 import React from 'react';
 import { styled } from 'linaria/react';
+
 import GithubSVG from '../../assets/github.svg';
+import LabelSR from '../atoms/LabelSR';
 
 const Footerr = styled.footer`
   position: absolute;
@@ -28,6 +30,7 @@ const Footer = () => {
   return (
     <Footerr>
       <a href="https://github.com/marcelpoz/color-contrast" target="_blank" rel="noreferrer">
+        <LabelSR>View repository on Github</LabelSR>
         <GithubSVG />
       </a>
     </Footerr>
