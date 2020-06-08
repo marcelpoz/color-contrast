@@ -1,39 +1,32 @@
 import React, { useContext } from 'react';
+import { css } from 'linaria';
 
 import Context from '../Context';
 
 const Preview = () => {
   const context = useContext(Context);
   const { bgColour, fontSize, fontWeight, textColour } = context;
+
+  const wrap = css`
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+
+    > span {
+      padding: 3.6rem;
+    }
+  `;
+
   return (
     <section
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexFlow: 'column nowrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: bgColour.hex || '#FFFFFF',
-        flexGrow: 1,
-      }}
+      className={wrap}
+      style={{ backgroundColor: bgColour.hex, color: textColour.hex, fontSize, fontWeight }}
     >
-      <span
-        // contentEditable
-        style={{
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          padding: '3.6rem',
-          textAlign: 'center',
-          background: 'transparent',
-          border: 0,
-          color: textColour.hex || '#000000',
-          fontSize,
-          fontWeight: fontWeight || 400,
-        }}
-      >
-        Colour Contrast Checker
-      </span>
+      <span>Colour Contrast Checker</span>
     </section>
   );
 };
