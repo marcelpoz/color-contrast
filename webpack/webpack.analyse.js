@@ -1,11 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const merge = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const baseConf = require('./webpack.base');
+const prodConf = require('./webpack.prod');
 
 module.exports = env => {
-  return merge(baseConf(env), {
-    stats: 'minimal',
+  return merge(prodConf(env), {
     plugins: [new BundleAnalyzerPlugin()],
   });
 };
