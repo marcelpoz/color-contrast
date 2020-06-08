@@ -14,10 +14,6 @@
 
 [NVM](https://github.com/creationix/nvm)
 
-## Recommended
-
-[Svelte VSCode Extension](https://marketplace.visualstudio.com/items?itemName=JamesBirtles.svelte-vscode)
-
 ## Setup
 
 ``` bash
