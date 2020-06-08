@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import Context from '../Context';
 
+import FormControl from '../atoms/FormControl';
+import FormLabel from '../atoms/FormLabel';
+import RangeInput from '../atoms/RangeInput';
+
 export default class InputFontSize extends Component {
   constructor(props, context) {
     super(props, context);
@@ -33,28 +37,19 @@ export default class InputFontSize extends Component {
   render() {
     const { displayValue } = this.state;
     return (
-      <div className="form-group">
-        <label htmlFor="fontsize">
-          Font size (in px)
-          <input
-            type="number"
-            name="fontsize"
-            min="12"
-            max="100"
-            value={displayValue}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-          />
-          <input
-            type="range"
-            value={displayValue}
-            min="12"
-            max="100"
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-          />
-        </label>
-      </div>
+      <FormControl>
+        <FormLabel>
+          Font size <small>(in px)</small>
+        </FormLabel>
+        <RangeInput
+          name="fontsize"
+          value={displayValue}
+          min="12"
+          max="100"
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+        />
+      </FormControl>
     );
   }
 }
