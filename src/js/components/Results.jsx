@@ -59,13 +59,13 @@ export default () => {
       </Result>
       <Result>
         <span>AA: </span>
-        <strong style={{ color: AAPassed ? 'green' : 'red' }}>
+        <strong style={{ color: AAPassed ? 'limegreen' : 'red' }}>
           {AAPassed ? '✅ Pass' : '❌ Fail'}
         </strong>
       </Result>
       <Result>
         <span>AAA: </span>
-        <strong style={{ color: AAAPassed ? 'green' : 'red' }}>
+        <strong style={{ color: AAAPassed ? 'limegreen' : 'red' }}>
           {AAAPassed ? '✅ Pass' : '❌ Fail'}
         </strong>
       </Result>
