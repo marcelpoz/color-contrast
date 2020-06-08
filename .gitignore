@@ -1,6 +1,7 @@
 .DS_STORE
 .AppleDouble
 .LSOverride
+.linaria-cache
 node_modules
 .flowconfig
 *~
