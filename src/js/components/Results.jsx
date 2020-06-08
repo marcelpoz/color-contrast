@@ -11,7 +11,7 @@ const Results = styled.div`
   right: var(--base-unit);
   padding: var(--base-unit);
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
   border-radius: var(--border-radius);
 
