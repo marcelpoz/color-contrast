@@ -1,8 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const chalk = require('chalk');
 const path = require('path');
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const paths = require('./paths');
@@ -11,7 +14,7 @@ module.exports = env => {
   return {
     mode: env.dev ? 'development' : 'production',
     stats: env.dev ? 'minimal' : true,
-    entry: [`${paths.src}/index.js`, `${paths.src}/index.css`],
+    entry: [`${paths.src}/index.js`],
     output: {
       path: paths.dist,
       filename: env.dev ? 'js/[name].js' : 'js/[name]-[contenthash].js',
@@ -22,17 +25,28 @@ module.exports = env => {
         {
           test: /\.(js|jsx)$/,
           exclude: /(node_modules)/,
-          loader: env.dev ? ['cache-loader', 'babel-loader', 'eslint-loader'] : 'babel-loader',
+          loader: env.dev
+            ? ['cache-loader', 'babel-loader', 'linaria/loader', 'eslint-loader']
+            : ['babel-loader', 'linaria/loader'],
         },
         {
           test: /\.css$/,
           exclude: /(node_modules)/,
-          loader: ['style-loader', 'css-loader'],
+          loader: [
+            env.dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+          ],
+        },
+        {
+          test: /\.svg$/,
+          loader: '@svgr/webpack',
         },
       ],
     },
 
     plugins: [
+      new CleanWebpackPlugin({ cleanStaleWebpackAssets: !!env.prod }),
       new CopyPlugin({
         patterns: [
           {
